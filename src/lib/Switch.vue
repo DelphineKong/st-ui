@@ -1,16 +1,22 @@
 <template>
     <div>
-        <button :class="{checked:checked}" @click="toggle"><span></span></button>
+        <button :class="{checked:value}" @click="toggle"><span></span></button>
+        <div>{{value}}</div>
     </div>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
 
 export default {
-    setup(){
-        const checked = ref(false)
-        const toggle=()=>{checked.value=!checked.value}
-        return{checked,toggle}
+  props:{
+    value:Boolean
+  },
+    setup(props,context){
+        const toggle=()=>{
+          context.emit('input',!props.value)
+          // this.$emit()
+        }
+        return{toggle}
 
     }
 }
