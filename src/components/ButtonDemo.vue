@@ -41,12 +41,16 @@
       <Button theme="text" level="danger">危险文字按钮</Button>
     </div>
     <h1>disabled示例</h1>
-    <Button disabled>hello</Button>
-    <Button :disabled="true">hello</Button>
-    <Button theme="link" disabled>禁用链接按钮</Button>
-    <Button theme="text" disabled>禁用按钮</Button>
+    <div>
+      <Button disabled>hello</Button>
+      <Button :disabled="true">hello</Button>
+      <Button theme="link" disabled>禁用链接按钮</Button>
+      <Button theme="text" disabled>禁用按钮</Button>
+    </div>
     <h1>loading示例</h1>
-    <Button loading>loading</Button>
+    <div>
+      <Button loading>loading</Button>
+    </div>
   </div>
 </template>
 <script lang="ts">
