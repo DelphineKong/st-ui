@@ -1,9 +1,9 @@
 <template>
-  <button class="st-button" :class="`theme-${theme}`">
+  <button class="st-button" :class="`st-theme-${theme}`">
     <slot></slot>
   </button>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {
     theme: {
@@ -13,7 +13,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
 $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;

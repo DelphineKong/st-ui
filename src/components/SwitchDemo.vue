@@ -3,7 +3,7 @@
         <Switch v-model:value="bool" ></Switch>
     </div>
 </template>
-<<script lang="ts">
+<script lang="ts">
 import { ref } from "vue";
 import Switch from "../lib/Switch.vue";
 export default {
