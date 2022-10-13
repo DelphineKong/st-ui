@@ -1,16 +1,33 @@
 <template>
-  <button class="st-button" :class="`st-theme-${theme}`">
+  <button class="st-button" :class="classes">
     <slot></slot>
   </button>
 </template>
 <script lang="ts">
+import { computed } from 'vue';
+
 export default {
   props: {
     theme: {
       type: String,
       default: "button",
     },
+    size:{
+      type: String,
+      default: "normal",
+    }
   },
+  setup(props){
+    const {theme,size} = props;
+    const classes = computed(()=>{
+      return {
+        [`st-theme-${theme}`]:theme,
+        [`st-size-${size}`]:size,
+      };
+    })
+    return{classes}
+  }
+
 };
 </script>
 <style lang="scss" >
@@ -61,6 +78,18 @@ $radius: 4px;
     color: inherit;
     &:hover,&:focus{
       background: darken(white, 5%);;
+    }
+  }
+  &.st-theme-button{
+    &.st-size-big{
+      font-size: 24px;
+      height: 48px;
+      padding: 0 16px;
+    }
+    &.st-size-small{
+      font-size: 12px;
+      height: 20px;
+      padding: 0 4px;
     }
   }
 }
