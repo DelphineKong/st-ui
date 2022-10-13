@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button :class="{ checked: value }" @click="toggle"><span></span></button>
+    <button class="st-switch" :class="{ 'st-checked': value }" @click="toggle"><span></span></button>
     <div>{{ value }}</div>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
 <style lang="scss" >
 $h: 22px;
 $h2: $h - 4px;
-button {
+.st-switch {
   height: $h;
   width: $h * 2;
   border: none;
@@ -40,7 +40,7 @@ button {
     border-radius: $h2 / 2;
     transition: all 250ms;
   }
-  &.checked {
+  &.st-checked {
     background: #1890ff;
     > span {
     left: calc(100% - #{$h2} - 2px);
@@ -54,7 +54,7 @@ button {
       width: $h2 + 4px;
     }
   }
-  &.checked:active {
+  &.st-checked:active {
     > span {
       width: $h2 + 4px;
       margin-left: -4px;
