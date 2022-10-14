@@ -13,7 +13,7 @@
           </main>
           <footer>
             <Button level="main" @click="ok">OK</Button>
-            <Button @click="cancle">cancle</Button>
+            <Button @click="cancel">cancel</Button>
           </footer>
         </div>
       </div>
@@ -35,7 +35,7 @@ export default {
     ok: {
       type: Function,
     },
-    cancle: {
+    cancel: {
       type: Function,
     },
   },
@@ -58,13 +58,13 @@ export default {
         close();
       }
     };
-    const cancle = () => {
-      if (props.cancle?.() != false) {
+    const cancel = () => {
+      if (props.cancel?.() != false) {
         close();
       }
       
     };
-    return { close, closeOnClickOverlay, ok, cancle };
+    return { close, closeOnClickOverlay, ok, cancel };
   },
 };
 </script>
