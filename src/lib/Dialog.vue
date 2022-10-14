@@ -1,21 +1,23 @@
 <template>
   <template v-if="visible">
-    <div class="st-dialog-overlay" @click="closeOnClickOverlay"></div>
-    <div class="st-dialog-wrapper">
-      <div class="st-dialog">
-        <header>
-          <slot name="title" />
-          <span class="st-dialog-close" @click="close"></span>
-        </header>
-        <main>
-          <slot name="content" />
-        </main>
-        <footer>
-          <Button level="main" @click="ok">OK</Button>
-          <Button @click="cancle">cancle</Button>
-        </footer>
+    <Teleport to="body">
+      <div class="st-dialog-overlay" @click="closeOnClickOverlay"></div>
+      <div class="st-dialog-wrapper">
+        <div class="st-dialog">
+          <header>
+            <slot name="title" />
+            <span class="st-dialog-close" @click="close"></span>
+          </header>
+          <main>
+            <slot name="content" />
+          </main>
+          <footer>
+            <Button level="main" @click="ok">OK</Button>
+            <Button @click="cancle">cancle</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </Teleport>
   </template>
 </template>
 <script lang="ts">
@@ -26,41 +28,42 @@ export default {
       type: Boolean,
       default: false,
     },
-    closeOnClickOverlay:{
-      typr:Boolean,
-      default:false,
+    closeOnClickOverlay: {
+      typr: Boolean,
+      default: false,
     },
-    ok:{
-      type:Function
+    ok: {
+      type: Function,
     },
-    cancle:{
-      type:Function
-    }
+    cancle: {
+      type: Function,
+    },
   },
   components: {
     Button,
   },
-  setup(props,context){
-    const close=()=>{
-      context.emit('update:visible',false)
-    }
-    const closeOnClickOverlay=()=>{
-      if(props.closeOnClickOverlay){
-        close() //如果closeOnClickOverlay点击遮罩层关闭为true，就执行close
+  setup(props, context) {
+    const close = () => {
+      context.emit("update:visible", false);
+    };
+    const closeOnClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
+        close(); //如果closeOnClickOverlay点击遮罩层关闭为true，就执行close
       }
-    }
-    const ok=()=>{
+    };
+    const ok = () => {
       // if(props.ok && props.ok()!=false){ //如果欧克（）返回值不为空，然后关闭
-      if(props.ok ?.()!=false){ //如果欧克（）返回值不为空，然后关闭
-        close()
+      if (props.ok?.() != false) {
+        //如果欧克（）返回值不为空，然后关闭
+        close();
       }
-    }
-    const cancle=()=>{
-      context.emit('cancle')
-      close()
-    }
-    return{close,closeOnClickOverlay,ok,cancle}
-  }
+    };
+    const cancle = () => {
+      context.emit("cancle");
+      close();
+    };
+    return { close, closeOnClickOverlay, ok, cancle };
+  },
 };
 </script>
 <style lang="scss">
