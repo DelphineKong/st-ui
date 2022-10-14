@@ -22,7 +22,7 @@
 </template>
 <script lang="ts">
 import Button from "./Button.vue";
-export default {
+export default { 
   props: {
     visible: {
       type: Boolean,
@@ -59,8 +59,10 @@ export default {
       }
     };
     const cancle = () => {
-      context.emit("cancle");
-      close();
+      if (props.cancle?.() != false) {
+        close();
+      }
+      
     };
     return { close, closeOnClickOverlay, ok, cancle };
   },
