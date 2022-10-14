@@ -1,22 +1,30 @@
 <template>
-  <div class="st-dialog-overlay"></div>
-  <div class="st-dialog-wrapper">
-    <div class="st-dialog">
-      <header>标题<span class="st-dialog-close"></span></header>
-      <main>
-        <p>内容111</p>
-        <p>内容222</p>
-      </main>
-      <footer>
-        <Button level="main">OK</Button>
-        <Button>cancle</Button>
-      </footer>
+  <template v-if="visible">
+    <div class="st-dialog-overlay"></div>
+    <div class="st-dialog-wrapper">
+      <div class="st-dialog">
+        <header>标题<span class="st-dialog-close"></span></header>
+        <main>
+          <p>内容111</p>
+          <p>内容222</p>
+        </main>
+        <footer>
+          <Button level="main">OK</Button>
+          <Button>cancle</Button>
+        </footer>
+      </div>
     </div>
-  </div>
+  </template>
 </template>
 <script lang="ts">
 import Button from "./Button.vue";
 export default {
+  props: {
+    visible: {
+      type: Boolean,
+      default: false,
+    },
+  },
   components: {
     Button,
   },
