@@ -6,7 +6,7 @@
     v-model:visible="x"
     :closeOnClickOverlay="false"
     :ok="f1"
-    :cancle="f2"
+    :cancel="f2"
   >
     <template v-slot:content>
       <strong>hi1</strong>
@@ -45,8 +45,8 @@ export default {
         ok(){
             console.log("ok")
         },
-        cancle(){
-            console.log("cancle")
+        cancel(){
+            console.log("cancel")
         }
       });
     };
