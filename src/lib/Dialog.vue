@@ -3,10 +3,12 @@
     <div class="st-dialog-overlay" @click="closeOnClickOverlay"></div>
     <div class="st-dialog-wrapper">
       <div class="st-dialog">
-        <header>标题<span class="st-dialog-close" @click="close"></span></header>
+        <header>
+          <slot name="title" />
+          <span class="st-dialog-close" @click="close"></span>
+        </header>
         <main>
-          <p>内容111</p>
-          <p>内容222</p>
+          <slot name="content" />
         </main>
         <footer>
           <Button level="main" @click="ok">OK</Button>
