@@ -1,16 +1,16 @@
 <template>
   <template v-if="visible">
-    <div class="st-dialog-overlay"></div>
+    <div class="st-dialog-overlay" @click="closeOnClickOverlay"></div>
     <div class="st-dialog-wrapper">
       <div class="st-dialog">
-        <header>标题<span class="st-dialog-close"></span></header>
+        <header>标题<span class="st-dialog-close" @click="close"></span></header>
         <main>
           <p>内容111</p>
           <p>内容222</p>
         </main>
         <footer>
-          <Button level="main">OK</Button>
-          <Button>cancle</Button>
+          <Button level="main" @click="ok">OK</Button>
+          <Button @click="cancle">cancle</Button>
         </footer>
       </div>
     </div>
@@ -24,10 +24,41 @@ export default {
       type: Boolean,
       default: false,
     },
+    closeOnClickOverlay:{
+      typr:Boolean,
+      default:false,
+    },
+    ok:{
+      type:Function
+    },
+    cancle:{
+      type:Function
+    }
   },
   components: {
     Button,
   },
+  setup(props,context){
+    const close=()=>{
+      context.emit('update:visible',false)
+    }
+    const closeOnClickOverlay=()=>{
+      if(props.closeOnClickOverlay){
+        close() //如果closeOnClickOverlay点击遮罩层关闭为true，就执行close
+      }
+    }
+    const ok=()=>{
+      // if(props.ok && props.ok()!=false){ //如果欧克（）返回值不为空，然后关闭
+      if(props.ok ?.()!=false){ //如果欧克（）返回值不为空，然后关闭
+        close()
+      }
+    }
+    const cancle=()=>{
+      context.emit('cancle')
+      close()
+    }
+    return{close,closeOnClickOverlay,ok,cancle}
+  }
 };
 </script>
 <style lang="scss">
