@@ -8,8 +8,10 @@
 
     <div class="st-tabs-content">
       <!-- <component :is="defaults[0]"></component> -->
-      {{current}}
-      <component class="st-tabs-content-item" :is="current"></component>
+      <component class="st-tabs-content-item"
+        v-for="(c,index) in defaults" :key="index" 
+        :class="{selected: c.props.title === selected}"
+        :is="c"></component>
   </div>
 </div>
   
@@ -71,6 +73,12 @@ $border-color: #d9d9d9;
   }
   &-content {
     padding: 8px 0;
+    &-item{
+      display: none;
+      &.selected{
+        display: block;
+      }
+    }
   }
 }
 </style>
