@@ -4,7 +4,7 @@
 
       <div class="st-tabs-nav-item" v-for="(t,index) in titles" :key="index"  @click="select(t)" :class="{selected: t=== selected}" >{{t}}</div>
     </div>
-
+    <div class="st-tabs-nav-indicator"></div>
 
     <div class="st-tabs-content">
       <!-- <component :is="defaults[0]"></component> -->
@@ -59,6 +59,7 @@ $border-color: #d9d9d9;
     display: flex;
     color: $color;
     border-bottom: 1px solid $border-color;
+    position: relative;
     &-item {
       padding: 8px 0;
       margin: 0 16px;
@@ -80,5 +81,13 @@ $border-color: #d9d9d9;
       }
     }
   }
+  &-indicator {
+      position: absolute;
+      height: 3px;
+      background: $blue;
+      left: 0;
+      bottom: -1px;
+      width: 100px;
+    }
 }
 </style>
