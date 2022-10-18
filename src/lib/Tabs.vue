@@ -98,7 +98,6 @@ $border-color: #d9d9d9;
         color: $blue;
       }
     }
-
     &-indicator {
       position: absolute;
       height: 3px;
@@ -107,7 +106,8 @@ $border-color: #d9d9d9;
       bottom: -1px;
       width: 100px;
     }
-    &-content {
+  }
+  &-content {
       padding: 8px 0;
       &-item {
         display: none;
@@ -116,6 +116,5 @@ $border-color: #d9d9d9;
         }
       }
     }
-  }
 }
 </style>
