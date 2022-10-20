@@ -1,6 +1,6 @@
 <template>
   <div class="st-tabs">
-    <div class="st-tabs-nav">
+    <div class="st-tabs-nav" ref="container">
       <div
         class="st-tabs-nav-item"
         v-for="(t, index) in titles"
@@ -11,14 +11,11 @@
         "
         :key="index"
         @click="select(t)"
-        :class="{ selected: t === selected }"
-      >
+        :class="{ selected: t === selected }">
         {{ t }}
       </div>
       <div class="st-tabs-nav-indicator" ref="indicator"></div>
     </div>
-    
-
     <div class="st-tabs-content">
       <!-- <component :is="defaults[0]"></component> -->
       <component
@@ -32,7 +29,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, onUpdated, ref } from "vue";
 import Tab from "./Tab.vue";
 export default {
   props: {
@@ -43,7 +40,9 @@ export default {
   setup(props, context) {
     const navItems = ref<HTMLDivElement[]>([]);
     const indicator = ref<HTMLDivElement>(null);
-    onMounted(() => {
+    const container = ref<HTMLDivElement>(null);
+
+    onMounted(() => {  //onMounted只在第一次渲染执行
       // console.log({...navItems.value})
       const divs = navItems.value;
       //获取当前tan标题的元素的长度，设置给下划线的元素长度
@@ -52,7 +51,25 @@ export default {
       )[0]; //取filter返回值的第0个
       const { width } = result.getBoundingClientRect();
       indicator.value.style.width = width + "px";
+      const { left:left1 } = container.value.getBoundingClientRect();
+      const { left:left2 } = result.getBoundingClientRect();
+      const left=left2-left1;
+      indicator.value.style.left=left+'px'
     });
+    onUpdated(()=>{
+      // console.log({...navItems.value})
+      const divs = navItems.value;
+      //获取当前tan标题的元素的长度，设置给下划线的元素长度
+      const result = divs.filter((div) =>
+        div.classList.contains("selected")
+      )[0]; //取filter返回值的第0个
+      const { width } = result.getBoundingClientRect();
+      indicator.value.style.width = width + "px";
+      const { left:left1 } = container.value.getBoundingClientRect();
+      const { left:left2 } = result.getBoundingClientRect();
+      const left=left2-left1;
+      indicator.value.style.left=left+'px'
+    })
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
@@ -73,7 +90,7 @@ export default {
       console.log(title);
       context.emit("update:selected", title);
     };
-    return { defaults, titles, current, select, navItems, indicator };
+    return { defaults, titles, current, select, navItems, indicator ,container};
   },
 };
 </script>
