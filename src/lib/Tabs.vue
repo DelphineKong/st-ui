@@ -41,8 +41,7 @@ export default {
     const navItems = ref<HTMLDivElement[]>([]);
     const indicator = ref<HTMLDivElement>(null);
     const container = ref<HTMLDivElement>(null);
-
-    onMounted(() => {  //onMounted只在第一次渲染执行
+    const x=()=>{
       // console.log({...navItems.value})
       const divs = navItems.value;
       //获取当前tan标题的元素的长度，设置给下划线的元素长度
@@ -55,21 +54,10 @@ export default {
       const { left:left2 } = result.getBoundingClientRect();
       const left=left2-left1;
       indicator.value.style.left=left+'px'
-    });
-    onUpdated(()=>{
-      // console.log({...navItems.value})
-      const divs = navItems.value;
-      //获取当前tan标题的元素的长度，设置给下划线的元素长度
-      const result = divs.filter((div) =>
-        div.classList.contains("selected")
-      )[0]; //取filter返回值的第0个
-      const { width } = result.getBoundingClientRect();
-      indicator.value.style.width = width + "px";
-      const { left:left1 } = container.value.getBoundingClientRect();
-      const { left:left2 } = result.getBoundingClientRect();
-      const left=left2-left1;
-      indicator.value.style.left=left+'px'
-    })
+    }
+     //onMounted只在第一次渲染执行
+    onMounted(x);
+    onUpdated(x);
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
@@ -122,6 +110,7 @@ $border-color: #d9d9d9;
       left: 0;
       bottom: -1px;
       width: 100px;
+      transition: all 250ms;
     }
   }
   &-content {
