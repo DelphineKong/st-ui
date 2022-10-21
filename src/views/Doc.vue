@@ -1,8 +1,21 @@
 <template>
   <div class="layout">
-    <Topnav :toggleMenuButtonVisible="true" class="nav" ></Topnav>
+    <Topnav :toggleMenuButtonVisible="true" class="nav"></Topnav>
     <div class="content">
       <aside v-if="menuVisible">
+        <h2>文档</h2>
+        <ol>
+          <li>
+            <router-link to="/doc/intro">介绍</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/install">安装</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/get-start">开始使用</router-link>
+          </li>
+          
+        </ol>
         <h2>组件列表</h2>
         <ol>
           <li>
@@ -22,22 +35,21 @@
       <main>
         <router-view></router-view>
       </main>
-      
     </div>
   </div>
 </template>
 <script lang="ts">
 import Topnav from "../components/Topnav.vue";
-import { inject, Ref } from 'vue';
+import { inject, Ref } from "vue";
 export default {
   components: {
     Topnav,
   },
-  setup(){
-    const menuVisible = inject<Ref<boolean>>('menuVisible')
-    console.log('Doc aside获取的menuVisible为：'+ menuVisible.value)
-    return {menuVisible}
-  }
+  setup() {
+    const menuVisible = inject<Ref<boolean>>("menuVisible");
+    console.log("Doc aside获取的menuVisible为：" + menuVisible.value);
+    return { menuVisible };
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -53,7 +65,7 @@ export default {
     padding-top: 60px;
     padding-left: 156px;
     @media (max-width: 500px) {
-      padding-left: 0; 
+      padding-left: 0;
     }
   }
 }
