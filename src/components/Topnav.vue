@@ -1,29 +1,35 @@
 <template>
-    <div class="topnav">
-            <div class="logo" >LOGO</div>
-            <ul class="menu">
-                <li>菜单1</li>
-                <li>菜单2</li>
-            </ul>
-            <span class="toggleAside" @click="toggleMenu"></span>
-        </div>
+  <div class="topnav">
+    <div class="logo">
+      <svg class="icon">
+        <use xlink:href="#icon-rail"></use>
+      </svg>
+    </div>
+    <ul class="menu">
+      <li>菜单1</li>
+      <li>菜单2</li>
+    </ul>
+    <span class="toggleAside" @click="toggleMenu"></span>
+  </div>
 </template>
 <script lang="ts">
-import { inject, Ref } from 'vue';
+import { inject, Ref } from "vue";
 
-export default{
-  setup(){
-    const menuVisible = inject<Ref<boolean>>('menuVisible')
-    console.log('topnav获取的menuVisible为：'+ menuVisible.value)
+export default {
+  setup() {
+    const menuVisible = inject<Ref<boolean>>("menuVisible");
+    console.log("topnav获取的menuVisible为：" + menuVisible.value);
     const toggleMenu = () => {
-      menuVisible.value = !menuVisible.value
-    }
-    return {toggleMenu}
-  }
-}
+      menuVisible.value = !menuVisible.value;
+    };
+    return { toggleMenu };
+  },
+};
 </script>
 <style lang="scss" scoped>
+$color: #007974;
 .topnav {
+  color: $color;
   display: flex;
   padding: 16px;
   position: fixed;
@@ -36,6 +42,10 @@ export default{
   > .logo {
     max-width: 6em;
     margin-right: auto;
+    >svg{
+      width: 32px;
+      height: 32px;
+    }
   }
   > .menu {
     display: flex;
@@ -45,7 +55,7 @@ export default{
       margin: 0 1em;
     }
   }
-  .toggleAside{
+  .toggleAside {
     display: inline-block;
     width: 24px;
     height: 24px;
@@ -56,10 +66,16 @@ export default{
     transform: translateY(-50%);
     display: none;
   }
-  @media (max-width:500px){
-    > .menu{display: none;}
-    > .logo{margin: 0 auto;}
-    > .toggleAside{display: inline-block;}
+  @media (max-width: 500px) {
+    > .menu {
+      display: none;
+    }
+    > .logo {
+      margin: 0 auto;
+    }
+    > .toggleAside {
+      display: inline-block;
+    }
   }
 }
 </style>
