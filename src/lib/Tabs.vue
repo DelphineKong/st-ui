@@ -44,10 +44,6 @@ export default {
     const container = ref<HTMLDivElement>(null);
     onMounted(() => {
       watchEffect(() => {
-        console.log(selectedItem.value); // console.log({...navItems.value})
-        if (!selectedItem.value) {
-          return;
-        }
         const { width } = selectedItem.value.getBoundingClientRect();
         indicator.value.style.width = width + "px";
         const { left: left1 } = container.value.getBoundingClientRect();
@@ -56,14 +52,12 @@ export default {
         indicator.value.style.left = left + "px";
       });
     });
-
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
         throw new Error("Tabs 子标签必须是Tab");
       }
     });
-
     const titles = defaults.map((tag) => {
       return tag.props.title;
     });
