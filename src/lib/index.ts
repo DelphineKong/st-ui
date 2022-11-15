@@ -1,0 +1,6 @@
+import {default as Switch} from './Switch.vue'
+import {default as Button} from './Button.vue'
+import {default as Tabs} from './Tabs.vue'
+import {default as Tab} from './Tab.vue'
+import {default as Dialog} from './Dialog.vue'
+export {openDialog as openDialog} from './openDialog'
