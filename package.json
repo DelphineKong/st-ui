@@ -1,5 +1,5 @@
 {
-  "name": "st-ui",
+  "name": "stone-ui-1",
   "version": "0.0.1",
   "files": ["dist/lib/*"],
   "main": "dist/lib/stui.js",
