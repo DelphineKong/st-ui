@@ -4,7 +4,8 @@
 然后在你的代码中写入下面的代码
 
 ```
-import {Button, Tabs, Switch, Dialog} from "st-ui"
+import {Button,Switch,Dialog,openDialog,Tabs,Tab} from 'stone-ui-2'
+import '../node_modules/stone-ui-2/dist/lib/stui.css'
 ```
 
 就可以使用我提供的组件了。
@@ -15,14 +16,39 @@ import {Button, Tabs, Switch, Dialog} from "st-ui"
 
 ```
 <template>
-  <div>
-    <Button>按钮</Button>
-  </div>
+  <Button @click="open">openDialog</Button>
+  <hr/>
+  <Switch v-model:value="switchValue"></Switch>
+  <hr/>
+  <Tabs v-model:selected="tabSelected">
+    <tab title="tab1">内容1 </tab>
+    <tab title="tab2">内容2</tab>
+  </Tabs>
+  <hr/>
+  
 </template>
 <script>
-import {Button, Tabs, Switch, Dialog} from "st-ui"
+import {Button,Switch,Dialog,openDialog,Tabs,Tab} from 'stone-ui-2'
+import '../node_modules/stone-ui-2/dist/lib/stui.css'
 export default {
-  components: {Button}
+  name: 'App',
+  components: {
+    Button,Switch,Dialog,openDialog,Tabs,Tab
+  },
+  data(){
+    return{
+      switchValue:false,
+      tabSelected:"tab1"
+    }
+  },
+  methods:{
+    open(){
+      openDialog({
+        title:'标题',
+        content:'内容'
+      })
+    }
+  }
 }
 </script>
 ```

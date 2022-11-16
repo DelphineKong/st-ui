@@ -1,6 +1,6 @@
 {
-  "name": "stone-ui-1",
-  "version": "0.0.1",
+  "name": "stone-ui-2",
+  "version": "0.0.2",
   "files": ["dist/lib/*"],
   "main": "dist/lib/stui.js",
   "type": "module",
