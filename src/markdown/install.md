@@ -12,4 +12,4 @@ npm install stone-ui-2
 yarn add stone-ui-2
 ```
 
-下一节：[开始使用](#/doc/get-started)
+下一节：[开始使用](#/doc/get-start)
