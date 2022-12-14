@@ -1,5 +1,5 @@
 {
-  "name": "srb-ui",
+  "name": "stui",
   "version": "0.0.1",
   "files": [
     "dist/lib/*"
