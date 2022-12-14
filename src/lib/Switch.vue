@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <button class="st-switch" :class="{ 'st-checked': value }" @click="toggle"><span></span></button>
-    <div>{{ value }}</div>
-  </div>
+    <button class="st-switch" :class="{ 'st-checked': value }" @click="toggle">
+      <span></span>
+    </button>
 </template>
 <script lang="ts">
 import { ref } from "vue";
