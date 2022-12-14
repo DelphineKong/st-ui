@@ -3,13 +3,13 @@
 打开终端运行下列命令：
 
 ```
-npm install stone-ui-2
+npm install srb-ui
 ```
 
 或
 
 ```
-yarn add stone-ui-2
+yarn add srb-ui
 ```
 
 下一节：[开始使用](#/doc/get-start)
