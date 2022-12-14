@@ -13,7 +13,7 @@ export default {
       vue: 'Vue'
     },
     name: 'STUI',
-    file: 'dist/lib/stui.js',
+    file: 'dist/lib/shst-ui.js',
     format: 'umd',
     plugins: [terser()]
   },

@@ -1,6 +1,6 @@
 # 介绍
 
-ST-UI 是一款基于 Vue 3 和 TypeScript 的 UI 组件库。
+SHST-UI 是一款基于 Vue 3 和 TypeScript 的 UI 组件库。
 
 
 源代码：git@gitee.com:ygxqz/st-ui.git，运行方法见README.md。

@@ -3,7 +3,7 @@
     <div class="topnavAndBanner">
       <Topnav></Topnav>
       <div class="banner">
-        <h1>st-ui</h1>
+        <h1>shst-ui</h1>
         <h2>前端ui框架</h2>
         <p class="actions">
           <a href="">GitHub</a>

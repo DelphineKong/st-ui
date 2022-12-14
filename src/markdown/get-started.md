@@ -4,8 +4,8 @@
 然后在你的代码中写入下面的代码
 
 ```
-import {Button,Switch,Dialog,openDialog,Tabs,Tab} from 'stui'
-import '../node_modules/stui/dist/lib/stui.css'
+import {Button,Switch,Dialog,openDialog,Tabs,Tab} from 'shst-ui'
+import '../node_modules/shst-ui/dist/lib/shst-ui.css'
 ```
 
 就可以使用我提供的组件了。
@@ -28,8 +28,8 @@ import '../node_modules/stui/dist/lib/stui.css'
   
 </template>
 <script>
-import {Button,Switch,Dialog,openDialog,Tabs,Tab} from 'stui'
-import '../node_modules/stui/dist/lib/stui.css'
+import {Button,Switch,Dialog,openDialog,Tabs,Tab} from 'shst-ui'
+import '../node_modules/shst-ui/dist/lib/shst-ui.css'
 export default {
   name: 'App',
   components: {

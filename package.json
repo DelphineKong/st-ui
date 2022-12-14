@@ -1,10 +1,10 @@
 {
-  "name": "stui",
+  "name": "shst-ui",
   "version": "0.0.1",
   "files": [
     "dist/lib/*"
   ],
-  "main": "dist/lib/stui.js",
+  "main": "dist/lib/shst-ui.js",
   "type": "module",
   "scripts": {
     "dev": "vite",
